@@ -60,7 +60,7 @@ process VIRALQC {
         --cores ${task.cpus} \
         --blast-task ${params.viralqc.blast_task} \
         --blast-qcov ${params.viralqc.blast_qcov} \
-        --blast-pid ${params.viralqc.blast_pid}
+        --blast-pident ${params.viralqc.blast_pid}
     """
 }
 
