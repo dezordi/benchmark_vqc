@@ -1,7 +1,7 @@
 #!/bin/bash
 
 INPUT_FASTA=$1
-PREFIX=$(basename "$INPUT_FASTA" | cut -d '.' -f 1) + "_meta" 
+PREFIX="$(basename "$INPUT_FASTA" | cut -d '.' -f 1)_meta"
 OUTPUT_TSV="${PREFIX}_results.meta.tsv"
 
 echo -e "Configuration\tReplicate\tTraceFile" > "$OUTPUT_TSV"
