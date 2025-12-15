@@ -80,7 +80,7 @@ Before running, ensure datasets are configured. Ignore if you already had config
 
 ```bash
 vqc get-nextclade-datasets
-vqc get-blast-database --release-date $LIMIT_DATE
+vqc get-blast-database --release-date "2025-12-15"
 ```
 
 ### Example Run Nextflow workflow
