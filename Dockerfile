@@ -13,6 +13,7 @@ RUN micromamba install -y -n base -c conda-forge -c bioconda \
     "seqtk>=1.5.0,<1.6.0" \
     "ncbi-datasets-cli>=18.9.0,<18.10.0" \
     "taxonkit>=0.20.0,<0.21.0" \
+    "nextflow>=24.0.0" \
     && micromamba clean --all --yes
 
 # Install viralQC via pip
