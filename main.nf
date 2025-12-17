@@ -41,6 +41,9 @@ log.info """
 process VIRALQC {
     cpus params.cpus
     memory "${params.memory} GB"
+    // Stop whole pipeline if this process fails
+    errorStrategy 'terminate'
+    maxRetries 0
     
     publishDir params.outdir, mode: 'copy'
     
@@ -53,6 +56,8 @@ process VIRALQC {
     
     script:
     """
+    set -euo pipefail
+
     vqc run \
         --input ${fasta} \
         --output-dir ${params.outdir} \
