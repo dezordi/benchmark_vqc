@@ -44,7 +44,7 @@ process VIRALQC {
     // Stop whole pipeline if this process fails
     errorStrategy 'terminate'
     maxRetries 0
-    
+ 
     publishDir params.outdir, mode: 'copy'
     
     input:
@@ -52,7 +52,8 @@ process VIRALQC {
     path datasets_dir
     
     output:
-    path "${params.outdir}/*", emit: results
+    path "results", emit: results
+    path "results/results.tsv", emit: results_tsv
     
     script:
     """
@@ -60,12 +61,12 @@ process VIRALQC {
 
     vqc run \
         --input ${fasta} \
-        --output-dir ${params.outdir} \
+        --output-dir results \
         --datasets-dir ${datasets_dir} \
         --cores ${task.cpus} \
         --blast-task ${params.viralqc.blast_task} \
         --blast-qcov ${params.viralqc.blast_qcov} \
-        --blast-pident ${params.viralqc.blast_pid}
+        --blast-pident ${params.viralqc.blast_pid} -v
     """
 }
 
