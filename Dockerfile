@@ -17,7 +17,8 @@ RUN micromamba install -y -n base -c conda-forge -c bioconda \
     && micromamba clean --all --yes
 
 # Install viralQC via pip
-RUN /opt/conda/bin/pip install --no-cache-dir viralQC==0.11.2
+RUN /opt/conda/bin/pip install --no-cache-dir viralQC==0.13.0
+RUN micromamba clean --all --yes
 
 # Set working directory
 WORKDIR /data

@@ -53,7 +53,7 @@ process VIRALQC {
     
     output:
     path "results", emit: results
-    path "results/results.tsv", emit: results_tsv
+    path "results/outputs/results.tsv", emit: results_tsv
     
     script:
     """
