@@ -7,7 +7,7 @@ OUTPUT_TSV="${PREFIX}_results.tsv"
 echo -e "Configuration\tReplicate\tTraceFile" > "$OUTPUT_TSV"
 
 # cpus : RAM (GB)
-CONFIGS=("1:2" "2:4" "4:8" "8:16" "16:32" "32:32")
+CONFIGS=("2:4" "4:8" "8:16" "16:32")
 
 
 TOTAL_RUNS=$(( ${#CONFIGS[@]} * 3 ))
@@ -26,7 +26,7 @@ for config in "${CONFIGS[@]}"; do
         echo "Running Configuration: $CONFIG_NAME, Replicate: $rep"
         echo "CPUs: $cpus, Memory: $memory"
 
-        nextflow run main.nf \
+        ./nextflow run main.nf \
             --input "$INPUT_FASTA" \
             --datasets_dir datasets \
             --outdir "$OUTDIR" \

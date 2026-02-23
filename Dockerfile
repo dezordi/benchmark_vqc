@@ -1,5 +1,7 @@
 FROM mambaorg/micromamba:1.5-jammy
 
+USER root
+
 # Activate micromamba each run command
 ENV MAMBA_DOCKERFILE_ACTIVATE=1
 
@@ -14,10 +16,11 @@ RUN micromamba install -y -n base -c conda-forge -c bioconda \
     "ncbi-datasets-cli>=18.9.0,<18.10.0" \
     "taxonkit>=0.20.0,<0.21.0" \
     "nextflow>=24.0.0" \
+    git \
     && micromamba clean --all --yes
 
 # Install viralQC via pip
-RUN /opt/conda/bin/pip install --no-cache-dir viralQC==0.13.0
+RUN /opt/conda/bin/pip install --no-cache-dir git+https://github.com/InstitutoTodosPelaSaude/viralQC.git@release/v1.0.0
 RUN micromamba clean --all --yes
 
 # Set working directory
